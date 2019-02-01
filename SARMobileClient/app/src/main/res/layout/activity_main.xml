@@ -6,10 +6,141 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                <View
+                        android:id="@+id/divider"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="?android:attr/listDivider"
+                        android:visibility="visible"/>
+                <TextView
+                        android:text="Tag ID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/tagIDLabel"
+                        android:layout_weight=".10"/>
+                <View
+                        android:id="@+id/divider2"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="?android:attr/listDivider"
+                        android:visibility="visible"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/lattitudeLabel" android:text="Lattitude"
+                        android:layout_weight=".20"/>
+                <View
+                        android:id="@+id/divider3"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="?android:attr/listDivider"
+                        android:visibility="visible"/>
+                <TextView
+                        android:text="Longitude"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/longitudeLabel"
+                        android:layout_weight=".2"/>
+                <View
+                        android:id="@+id/divider4"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="?android:attr/listDivider"
+                        android:visibility="visible"/>
+                <TextView
+                        android:text="Altitude"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/altitudeLabel"
+                        android:layout_weight=".2"/>
+                <View
+                        android:id="@+id/divider5"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="?android:attr/listDivider"
+                        android:visibility="visible"/>
+                <TextView
+                        android:text="Distance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/distanceLabel"
+                        android:layout_weight=".3"/>
+                <View
+                        android:id="@+id/divider6"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="?android:attr/listDivider"
+                        android:visibility="visible"/>
+            </TableRow>
+            <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                <View
+                        android:id="@+id/divider"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="?android:attr/listDivider"
+                        android:visibility="visible"/>
+                <TextView
+                        android:text="5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:layout_weight=".10"/>
+                <View
+                        android:id="@+id/divider2"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="?android:attr/listDivider"
+                        android:visibility="visible"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="-47.2643"
+                        android:layout_weight=".20"/>
+                <View
+                        android:id="@+id/divider3"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="?android:attr/listDivider"
+                        android:visibility="visible"/>
+                <TextView
+                        android:text="-46.2637"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:layout_weight=".2"/>
+                <View
+                        android:id="@+id/divider4"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="?android:attr/listDivider"
+                        android:visibility="visible"/>
+                <TextView
+                        android:text="70.5213"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/textView8" android:layout_weight=".2"/>
+                <View
+                        android:id="@+id/divider5"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="?android:attr/listDivider"
+                        android:visibility="visible"/>
+                <TextView
+                        android:text=".056"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/textView9" android:layout_weight=".3"/>
+                <View
+                        android:id="@+id/divider6"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="?android:attr/listDivider"
+                        android:visibility="visible"/>
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" android:padding="5dp" tools:layout_editor_absoluteY="649dp">
+            android:layout_height="match_parent" android:padding="5dp"
+            tools:layout_editor_absoluteX="0dp" app:layout_constraintBottom_toBottomOf="parent"
+            android:gravity="bottom|center">
         <Button
                 android:text="Premium"
                 android:layout_width="wrap_content"
