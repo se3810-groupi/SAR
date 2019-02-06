@@ -10,4 +10,6 @@
     <string name="tag_button">Tag</string>
     <string name="settings_button">Settings</string>
     <string name="friends_button">Friends</string>
+
+    <string name="tag_creation_page_header">Create a New Tag</string>
 </resources>

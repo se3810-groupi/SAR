@@ -1,5 +1,6 @@
 package se3810.groupi
 
+// THIS IS NOT NEEDE AND WILL BE REMOVED
 class User() {
     var userID : Int
     var email : String
