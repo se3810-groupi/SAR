@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">SARMobileClient</string>
+
+    <string name="tag_id_header">Tag ID</string>
+    <string name="lattitude_header">Lattitude</string>
+    <string name="longitude_header">Longitude</string>
+    <string name="altitude_header">Altitude</string>
+    <string name="distance_header">Distance</string>
+
+    <string name="tag_button">Tag</string>
+    <string name="settings_button">Settings</string>
+    <string name="friends_button">Friends</string>
 </resources>
