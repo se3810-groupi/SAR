@@ -9,28 +9,100 @@
 
     <TableLayout
             android:layout_width="395dp"
-            android:layout_height="669dp"
+            android:layout_height="657dp"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
-            android:id="@+id/tableLayout" app:layout_constraintHorizontal_bias="0.0">
+            android:id="@+id/createTagPage" app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent">
 
         <TableRow android:layout_width="match_parent" android:layout_height="match_parent"
-                  android:id="@+id/latDisplay"/>
+                  android:id="@+id/header">
+            <TextView
+                    android:text="@string/tag_creation_page_header"
+                    android:layout_width="393dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/tagCreationHeader" app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" android:textSize="30sp"
+                    app:layout_constraintBottom_toTopOf="@+id/createTagPage"
+                    app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.0"/>
+        </TableRow>
         <TableRow android:layout_width="match_parent" android:layout_height="match_parent"
-                  android:id="@+id/lonDisplay"/>
+                  android:id="@+id/latDisplay">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/tagLatLabel" android:textSize="18sp"
+                    android:text="@string/tag_latitude_label"/>
+            <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/tagLat" android:textSize="18sp"/>
+        </TableRow>
         <TableRow android:layout_width="match_parent" android:layout_height="match_parent"
-                  android:id="@+id/altDisplay"/>
-        <TableRow android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/addLabel"/>
+                  android:id="@+id/lonDisplay">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/tagLonLabel" android:textSize="18sp"
+                    android:text="@string/tag_longitude_label"/>
+            <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/tagLon" android:textSize="18sp"/>
+        </TableRow>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent"
+                  android:id="@+id/altDisplay">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/tagAltLabel" android:textSize="18sp"
+                    android:text="@string/tag_altitude_label"/>
+            <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/tagAlt" android:textSize="18sp"/>
+        </TableRow>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/addLabel">
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/addLabelLabel" android:textSize="18sp"
+                        android:text="@string/tag_add_label"/>
+                <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:ems="10"
+                        android:id="@+id/editText2" android:autofillHints="Label Text"
+                        android:hint="Label text goes here"/>
+                <Button
+                        android:text="@string/add_label_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/addLabelButton"
+                        android:layout_weight="1"/>
+            </LinearLayout>
+        </TableRow>
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/labelsDisplay"/>
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/create_cancel_display">
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:gravity="center">
+                <Button
+                        android:text="@string/create_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/createButton" android:width="150dp"/>
+                <Button
+                        android:text="@android:string/cancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/cancelButton" android:width="150dp"/>
+            </LinearLayout>
+        </TableRow>
     </TableLayout>
-    <TextView
-            android:text="@string/tag_creation_page_header"
-            android:layout_width="393dp"
-            android:layout_height="43dp"
-            android:id="@+id/tagCreationHeader" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:textSize="24sp"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/tableLayout"
-            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.0"/>
 </android.support.constraint.ConstraintLayout>

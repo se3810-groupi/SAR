@@ -32,7 +32,7 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:id="@+id/lattitudeLabel"
-                        android:text="@string/lattitude_header"
+                        android:text="@string/latitude_header"
                         android:layout_weight=".20"/>
                 <View
                         android:layout_width="1dp"
