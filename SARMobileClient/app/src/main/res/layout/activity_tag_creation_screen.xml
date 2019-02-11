@@ -30,36 +30,52 @@
         </TableRow>
         <TableRow android:layout_width="match_parent" android:layout_height="match_parent"
                   android:id="@+id/latDisplay">
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:id="@+id/tagLatLabel" android:textSize="18sp"
-                    android:text="@string/tag_latitude_label"/>
-            <TextView
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:padding="5dp">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/tagLatLabel" android:textSize="18sp"
+                        android:text="@string/tag_latitude_label"/>
+                <TextView
 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:id="@+id/tagLat" android:textSize="18sp"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/tagLat" android:textSize="18sp"
+                />
+            </LinearLayout>
         </TableRow>
         <TableRow android:layout_width="match_parent" android:layout_height="match_parent"
                   android:id="@+id/lonDisplay">
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:id="@+id/tagLonLabel" android:textSize="18sp"
-                    android:text="@string/tag_longitude_label"/>
-            <TextView
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:padding="5dp">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/tagLonLabel" android:textSize="18sp"
+                        android:text="@string/tag_longitude_label"/>
+                <TextView
 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:id="@+id/tagLon" android:textSize="18sp"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/tagLon" android:textSize="18sp"/>
+            </LinearLayout>
         </TableRow>
         <TableRow android:layout_width="match_parent" android:layout_height="match_parent"
                   android:id="@+id/altDisplay">
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:id="@+id/tagAltLabel" android:textSize="18sp"
-                    android:text="@string/tag_altitude_label"/>
-            <TextView
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:padding="5dp">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/tagAltLabel" android:textSize="18sp"
+                        android:text="@string/tag_altitude_label"/>
+                <TextView
 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:id="@+id/tagAlt" android:textSize="18sp"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/tagAlt" android:textSize="18sp"/>
+            </LinearLayout>
         </TableRow>
         <TableRow android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/addLabel">
             <LinearLayout

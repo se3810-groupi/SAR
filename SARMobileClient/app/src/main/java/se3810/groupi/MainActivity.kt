@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     var nearbyTags : NearbyTags? = null
     private var locationManager : LocationManager? = null
+    private var location : Location? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +27,10 @@ class MainActivity : AppCompatActivity() {
 
         //Initialize location services
         this.locationManager = getSystemService(LOCATION_SERVICE) as LocationManager?
-
+        //TODO this hardcoded value is temporary to validate the passing of information between
+        //TODO the activities for a new tag being created, and will be adjusted with the implementation
+        //TODO of the location manager
+        this.location = Location(-12.345678, 12.345678, 75.0)
 
         loadTags()
     }
@@ -39,6 +43,9 @@ class MainActivity : AppCompatActivity() {
         val tagCreateIntent = Intent(this, TagCreationScreen::class.java)
 
         //Send coordinates
+        tagCreateIntent.putExtra("LAT", this.location?.latitude)
+        tagCreateIntent.putExtra("LON", this.location?.longitude)
+        tagCreateIntent.putExtra("ALT", this.location?.altitude)
 
         // Start the new activity.
         startActivity(tagCreateIntent)
