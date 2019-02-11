@@ -12,7 +12,7 @@
 
 spoofed_user = User.find_or_create_by(given_name: 'Ryley',
                                       family_name: 'Powell',
-                                      username: 'powelr',
+                                      username: 'powellr',
                                       email: 'powellr@msoe.edu',
                                       password: 'something-something-something-darkside',
                                       is_admin: true,

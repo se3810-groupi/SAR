@@ -1,19 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  full_name: MyString
-  email: MyString
-  password: MyString
-  friends_list: MyText
-  is_admin: false
+Ryley_Powell:
+  given_name: Ryley
+  family_name: Powell
+  username: powellr
+  email: powellr@msoe.edu
+  password: something-something-something-darkside
+  is_admin: true
   account_locked: false
-  tags: one
-
-two:
-  full_name: MyString
-  email: MyString
-  password: MyString
-  friends_list: MyText
-  is_admin: false
-  account_locked: false
-  tags: two

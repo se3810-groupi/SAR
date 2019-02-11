@@ -1,11 +1,46 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  longitude: 1.5
-  latitude: 1.5
-  altitude: 1.5
+CC_MSOE:
+  latitude: 43.044151
+  longitude: -87.908549
+  altitude: 0
 
-two:
-  longitude: 1.5
-  latitude: 1.5
-  altitude: 1.5
+German_English_Academy:
+  latitude: 43.044151
+  longitude: -87.908238
+  altitude: 0
+
+Grohmann_Museum:
+  latitude: 43.043644
+  longitude: -87.908201
+  altitude: 0
+
+Blatz_Condos:
+  latitude: 43.044979
+  longitude: -87.908614
+  altitude: 0
+
+Bar_Louie:
+  latitude: 43.045093
+  longitude: -87.910759
+  altitude: 0
+
+Red_Arrow_Park:
+  latitude: 43.043104
+  longitude: -87.910069
+  altitude: 0
+
+RWH:
+  latitude: 43.045351
+  longitude: -87.907376
+  altitude: 0
+
+MLH:
+  latitude: 43.045982
+  longitude: -87.907660
+  altitude: 0
+
+CC_03:
+  latitude: 43.044379
+  longitude: -87.908861
+  altitude: 0
