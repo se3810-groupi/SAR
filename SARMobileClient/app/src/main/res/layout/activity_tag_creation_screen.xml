@@ -91,10 +91,11 @@
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
                         android:ems="10"
-                        android:id="@+id/editText2" android:autofillHints="Label Text"
-                        android:hint="Label text goes here"/>
+                        android:id="@+id/labelTextInputField" android:autofillHints="Label Text"
+                        android:hint="@string/add_label_hint_text"/>
                 <Button
                         android:text="@string/add_label_button"
+                        android:onClick="addLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:id="@+id/addLabelButton"
                         android:layout_weight="1"/>
@@ -102,10 +103,24 @@
         </TableRow>
         <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" android:id="@+id/labelsDisplay"/>
+                android:layout_height="match_parent" android:id="@+id/labelsDisplay">
+            <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:id="@+id/labelsTable">
+                <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    <TextView
+                            android:text="Labels:"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:textSize="18sp"/>
+                </TableRow>
+            </TableLayout>
+        </TableRow>
         <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" android:id="@+id/create_cancel_display">
+                android:layout_height="match_parent" android:id="@+id/create_cancel_display"
+        >
             <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"

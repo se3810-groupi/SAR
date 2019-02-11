@@ -18,4 +18,5 @@
     <string name="tag_add_label">Add Label: </string>
     <string name="add_label_button">Add</string>
     <string name="create_button">Create Tag</string>
+    <string name="add_label_hint_text">Label text goes here</string>
 </resources>
