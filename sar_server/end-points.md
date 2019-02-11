@@ -190,14 +190,18 @@ Application/JSON
 
 #### Description:
 
-A spoofed version of pinging the database that is rudimentary and returns a minimal message with an 'OK' status
+A spoofed version of pinging the database that is rudimentary and returns a minimal message with an 'OK' status and will dump out any parameters passed to it.
 
 #### Response:
 
+A response-body will always include the following:
 ```json
 {
     "status": "ok",
-    "message": "You've pinged the SAR Server"
+    "message": "You've pinged the SAR Server",
+    "controller": "monitor",
+    "action": "echo"
+   
 }
 
 ```
