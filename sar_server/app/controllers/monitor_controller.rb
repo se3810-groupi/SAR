@@ -5,7 +5,8 @@
 class MonitorController < ApplicationController
 
   def echo
-    
+    echo_hash = { status: :ok, message: 'You\'ve pinged the SAR Server' }
+    json_response(echo_hash)
   end
 
 end

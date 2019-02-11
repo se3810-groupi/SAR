@@ -185,3 +185,27 @@ Application/JSON
 `location_id` - an integer value that represents the location inside the database. This can be specified in place of a `latitude` and `longitude` pair if the ID is known
 
 `proximity` - a distance in kilometers (Note: Anything other than a positive, integer value may have un-expected results)
+
+## /monitor/ping
+
+#### Description:
+
+A spoofed version of pinging the database that is rudimentary and returns a minimal message with an 'OK' status
+
+#### Response:
+
+```json
+{
+    "status": "ok",
+    "message": "You've pinged the SAR Server"
+}
+
+```
+
+#### Required Parameters:
+
+N/A
+
+#### Optional Parameters:
+
+N/A
