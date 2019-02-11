@@ -1,7 +1,7 @@
 package se3810.groupi
 
 class NearbyTags {
-    private var tags : ArrayList<Tag>
+    var tags : ArrayList<Tag>
 
     init {
         this.tags = ArrayList<Tag>()
@@ -15,4 +15,5 @@ class NearbyTags {
     fun reload(newTags : ArrayList<Tag>){
         this.tags = newTags
     }
+
 }
