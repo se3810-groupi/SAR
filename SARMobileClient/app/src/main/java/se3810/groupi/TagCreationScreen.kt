@@ -15,6 +15,9 @@ class TagCreationScreen : AppCompatActivity() {
     private var labelsTable: TableLayout? = null
     private var labelTextInputField: EditText? = null
 
+    private val REQUEST_CODE_CANCEL : Int = 1
+    private val REQUEST_CODE_COMPLETE : Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tag_creation_screen)
@@ -50,5 +53,14 @@ class TagCreationScreen : AppCompatActivity() {
         label.text = text
         labelRow.addView(label)
         labelsTable?.addView(labelRow)
+    }
+
+    fun cancel(view: View){
+        super.onBackPressed()
+    }
+
+    fun createTag(view: View){
+        //TODO send tag to server
+        super.onBackPressed()
     }
 }

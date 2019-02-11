@@ -127,10 +127,12 @@
                     android:layout_height="match_parent" android:gravity="center">
                 <Button
                         android:text="@string/create_button"
+                        android:onClick="createTag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:id="@+id/createButton" android:width="150dp"/>
                 <Button
                         android:text="@android:string/cancel"
+                        android:onClick="cancel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:id="@+id/cancelButton" android:width="150dp"/>
             </LinearLayout>
