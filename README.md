@@ -26,4 +26,6 @@ CLIENT SETUP
 
 SERVER SETUP
 
-TODO
+SEE README.md under sar_server for build instructions.
+
+SEE end-points.md under sar_server for supported end-points.
