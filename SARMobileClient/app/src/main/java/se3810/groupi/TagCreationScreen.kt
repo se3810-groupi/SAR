@@ -2,11 +2,19 @@ package se3810.groupi
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import com.google.gson.Gson
+import org.json.JSONObject
 
 class TagCreationScreen : AppCompatActivity() {
 
@@ -60,7 +68,19 @@ class TagCreationScreen : AppCompatActivity() {
     }
 
     fun createTag(view: View){
-        //TODO send tag to server
+        val queue = Volley.newRequestQueue(this)
+        val url = "192.168.2.3:3000/tags?latitude=" + location?.latitude + "&longitude=" + location?.longitude
+
+        val stringRequest = StringRequest(
+            Request.Method.POST, url,
+            Response.Listener<String> { response ->
+                if (response != null) {
+                    System.out.println(response)
+                }
+            },
+            Response.ErrorListener { error -> Log.e("LOG", error.toString()) })
+
+        queue.add(stringRequest)
         super.onBackPressed()
     }
 }
