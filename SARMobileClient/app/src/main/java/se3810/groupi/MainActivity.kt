@@ -27,8 +27,6 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import java.io.IOException
-import android.widget.Toast
 import com.google.android.gms.location.*
 
 class MainActivity : AppCompatActivity() {
@@ -36,11 +34,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var nearbyTags : NearbyTags
     private lateinit var location : Location
     private lateinit var tagTable : TableLayout
-//    private lateinit var mLocationRequest : LocationRequest
+    private lateinit var mLocationRequest : LocationRequest
     private val UPDATE_INTERVAL : Long = 1000 // 1 sec
     private val FASTEST_INTERVAL : Long = 500 // .5 sec
     private var locationManager: LocationManager? = null
-//    var client: OkHttpClient = OkHttpClient();
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
