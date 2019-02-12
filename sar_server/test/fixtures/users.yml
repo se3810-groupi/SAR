@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+Ryley_Powell:
+  given_name: Ryley
+  family_name: Powell
+  username: powellr
+  email: powellr@msoe.edu
+  password: something-something-something-darkside
+  is_admin: true
+  account_locked: false

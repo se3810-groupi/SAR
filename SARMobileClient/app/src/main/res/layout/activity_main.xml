@@ -6,14 +6,52 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
-
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-    />
-
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/tagTable">
+            <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                <TextView
+                        android:text="@string/tag_id_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/tagIDLabel"
+                        android:layout_weight=".10"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/lattitudeLabel"
+                        android:text="@string/latitude_header"
+                        android:layout_weight=".20"/>
+                <TextView
+                        android:text="@string/longitude_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/longitudeLabel"
+                        android:layout_weight=".2"/>
+                <TextView
+                        android:text="@string/altitude_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/altitudeLabel"
+                        android:layout_weight=".2"/>
+                <TextView
+                        android:text="@string/distance_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/distanceLabel"
+                        android:layout_weight=".3"/>
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:padding="5dp"
+            tools:layout_editor_absoluteX="0dp" app:layout_constraintBottom_toBottomOf="parent"
+            android:gravity="bottom|center">
+        <Button
+                android:text="@string/tag_button"
+                android:onClick="createTag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" tools:layout_editor_absoluteY="665dp"
+                tools:layout_editor_absoluteX="161dp" android:id="@+id/tagButton"/>
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

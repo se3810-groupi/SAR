@@ -1,0 +1,81 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+--- !omap
+CC:
+  label: MSOE Campus Center
+  location: CC_MSOE
+  user: Ryley_Powell
+  image: <%= Faker::Artist.name %>
+  paid_tag: false
+  reported: false
+
+CC_Nursing:
+  label: MSOE School of Nursing
+  location: CC_MSOE
+  user: Ryley_Powell
+  image: <%= Faker::Artist.name %>
+  paid_tag: false
+  reported: false
+
+Ger_Eng_Acd:
+  label: German English Academy
+  location: German_English_Academy
+  user: Ryley_Powell
+  image: <%= Faker::Artist.name %>
+  paid_tag: false
+  reported: false
+
+Grohmann_Mus:
+  label: Grohmann Museum
+  location: Grohmann_Museum
+  user: Ryley_Powell
+  image: <%= Faker::Artist.name %>
+  paid_tag: false
+  reported: false
+
+Blatz_Condos:
+  label: Blatz Condominiums
+  location: Blatz_Condos
+  user: Ryley_Powell
+  image: <%= Faker::Artist.name %>
+  paid_tag: false
+  reported: false
+
+Bar_Lou:
+  label: Bar Louie
+  location: Bar_Louie
+  user: Ryley_Powell
+  image: <%= Faker::Artist.name %>
+  paid_tag: false
+  reported: false
+
+Red_AP:
+  label: Red Arrow Park
+  location: Red_Arrow_Park
+  user: Ryley_Powell
+  image: <%= Faker::Artist.name %>
+  paid_tag: false
+  reported: false
+
+rwh:
+  label: Roy W. Johnson Residence Hall
+  location: RWH
+  user: Ryley_Powell
+  image: <%= Faker::Artist.name %>
+  paid_tag: false
+  reported: false
+
+mlh:
+  label: Margaret Loock Residence Hall
+  location: MLH
+  user: Ryley_Powell
+  image: <%= Faker::Artist.name %>
+  paid_tag: false
+  reported: false
+
+CC-03:
+  label: CC-03
+  location: CC_03
+  user: Ryley_Powell
+  image: <%= Faker::Artist.name %>
+  paid_tag: false
+  reported: false
