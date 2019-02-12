@@ -1,24 +1,28 @@
 package se3810.groupi
 
 class Tag(id: Int, loc: Location){
-    var tagID : Int
+    var id : Int
     var location : Location
-    var textLabels : ArrayList<String>
-    var imgLabels: ArrayList<String>
+    var label : ArrayList<String>
+    var image: ArrayList<String>
+    var location_id : Int
+    var users_id : Int
 
     init {
-        this.tagID = id
+        this.id = id
         this.location = loc
-        this.textLabels = ArrayList<String>()
-        this.imgLabels = ArrayList<String>()
+        this.label = ArrayList<String>()
+        this.image = ArrayList<String>()
+        this.location_id = 1
+        this.users_id = 1;
     }
 
     /**
      * Add a text label to be displayed with the tag
      * label: the text to store as a text label
      */
-    fun addTextLabel(label : String) {
-        textLabels.add(label)
+    fun addTextLabel(newLabel : String) {
+        label.add(newLabel)
     }
 
     /**
@@ -26,6 +30,6 @@ class Tag(id: Int, loc: Location){
      * img: the image to store as an image label
      */
     fun addImageLabel(img : String) {
-        imgLabels.add(img)
+        image.add(img)
     }
 }

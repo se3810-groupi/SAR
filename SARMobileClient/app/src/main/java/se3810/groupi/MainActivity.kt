@@ -19,15 +19,18 @@ import android.os.Bundle
 import android.os.Looper
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
+import android.util.Log
 import android.view.View
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
-import com.android.volley.Request
 import com.android.volley.Response
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
 import com.google.android.gms.location.*
+import org.json.JSONObject
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
+import com.google.gson.Gson
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -90,24 +93,11 @@ class MainActivity : AppCompatActivity() {
         nearbyTags?.tags?.add(Tag(4, Location(32.1, 32.4, 52.2)))
         // TODO ^^^^^^^^^^^^
 
-        val textView = findViewById<TextView>(R.id.text)
-
-        val queue = Volley.newRequestQueue(this)
-        val url = "http://www.google.com"
-
-        val stringRequest = StringRequest(
-            Request.Method.GET, url,
-            Response.Listener<String> { response ->
-                // Display the first 500 characters of the response string.
-                textView.text = "Response is: ${response.substring(0, 500)}"
-            },
-            Response.ErrorListener { textView.text = "That didn't work!" })
-
-        queue.add(stringRequest)
+        getTags();
 
         // Display Tags
         for (tag: Tag in nearbyTags!!.tags) {
-            val id = tag.tagID
+            val id = tag.id
             val lat = tag.location.latitude
             val lon = tag.location.longitude
             val alt = tag.location.altitude
@@ -155,6 +145,30 @@ class MainActivity : AppCompatActivity() {
             // Add row to table
             tagTable?.addView(tableRow)
         }
+    }
+
+    fun getTags(){
+        val requestQueue = Volley.newRequestQueue(this)
+        val url = "192.168.2.3:3000/tags/near_me"
+        val jsonObjectRequest = JsonObjectRequest(url,
+            Response.Listener<JSONObject> { response ->
+                if (response != null) {
+                    val resultCount = response.optInt("resultCount")
+                    if (resultCount > 0) {
+                        val gson = Gson()
+                        val jsonArray = response.optJSONArray("results")
+                        if (jsonArray != null) {
+                            val tags = gson.fromJson(jsonArray.toString(), Array<Tag>::class.java)
+                            if (tags != null && tags!!.size > 0) {
+                                for (tag in tags!!) {
+                                    nearbyTags.tags.add(tag);
+                                }
+                            }
+                        }
+                    }
+                }
+            }, Response.ErrorListener { error -> Log.e("LOG", error.toString()) })
+        requestQueue.add<JSONObject>(jsonObjectRequest)
     }
 
     //Adapted from https://github.com/codepath/android_guides/wiki/Retrieving-Location-with-LocationServices-API and
