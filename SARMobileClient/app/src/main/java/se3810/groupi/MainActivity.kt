@@ -83,18 +83,7 @@ class MainActivity : AppCompatActivity() {
      * locally.
      */
     fun loadTags() {
-        /** TODO
-         * 1) Get coordinates from device
-         * 2) format tags and send request to server
-         * 3) format results into a list of tags
-         * 4) call nearbyTags.reload(new list of tags)
-         */
-
-        // TODO Remove this
-        nearbyTags?.tags?.add(Tag(4, Location(32.1, 32.4, 52.2)))
-        // TODO ^^^^^^^^^^^^
-
-        getTags();
+        getTags()
 
         // Display Tags
         for (tag: Tag in nearbyTags!!.tags) {
@@ -150,7 +139,7 @@ class MainActivity : AppCompatActivity() {
 
     fun getTags(){
         val requestQueue = Volley.newRequestQueue(this)
-        val url = "http://192.168.1.13:3000/tags/near_me?latitude=" + location.latitude + "&longitude=" + location.longitude
+        val url = "http://" + getString(R.string.SERVER_IP_PORT) + "/tags/near_me?latitude=" + location.latitude + "&longitude=" + location.longitude
         val jsonObjectRequest = JsonObjectRequest(
             Request.Method.GET, url,
             Response.Listener<JSONObject> { response ->
@@ -161,8 +150,8 @@ class MainActivity : AppCompatActivity() {
                         val jsonArray = response.optJSONArray("results")
                         if (jsonArray != null) {
                             val tags = gson.fromJson(jsonArray.toString(), Array<Tag>::class.java)
-                            if (tags != null && tags!!.size > 0) {
-                                for (tag in tags!!) {
+                            if (tags != null && tags.size > 0) {
+                                for (tag in tags) {
                                     nearbyTags.tags.add(tag);
                                 }
                             }
