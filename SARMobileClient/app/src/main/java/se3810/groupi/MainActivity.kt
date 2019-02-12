@@ -14,13 +14,19 @@ import android.view.View
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
 
-    var nearbyTags : NearbyTags? = null
-    private var locationManager : LocationManager? = null
-    private var location : Location? = null
-    var tagTable : TableLayout? = null
+    var nearbyTags: NearbyTags? = null
+    private var locationManager: LocationManager? = null
+    private var location: Location? = null
+    var tagTable: TableLayout? = null
+//    var client: OkHttpClient = OkHttpClient();
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +52,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Opens the createTag activity
      */
-    fun createTag(view: View){
+    fun createTag(view: View) {
         // Create an Intent to start the second activity
         val tagCreateIntent = Intent(this, TagCreationScreen::class.java)
 
@@ -72,11 +78,26 @@ class MainActivity : AppCompatActivity() {
          */
 
         // TODO Remove this
-        nearbyTags?.tags?.add(Tag(4,Location(32.1,32.4,52.2)))
+        nearbyTags?.tags?.add(Tag(4, Location(32.1, 32.4, 52.2)))
         // TODO ^^^^^^^^^^^^
 
+        val textView = findViewById<TextView>(R.id.text)
+
+        val queue = Volley.newRequestQueue(this)
+        val url = "http://www.google.com"
+
+        val stringRequest = StringRequest(
+            Request.Method.GET, url,
+            Response.Listener<String> { response ->
+                // Display the first 500 characters of the response string.
+                textView.text = "Response is: ${response.substring(0, 500)}"
+            },
+            Response.ErrorListener { textView.text = "That didn't work!" })
+
+        queue.add(stringRequest)
+
         // Display Tags
-        for (tag: Tag in nearbyTags!!.tags){
+        for (tag: Tag in nearbyTags!!.tags) {
             val id = tag.tagID
             val lat = tag.location.latitude
             val lon = tag.location.longitude
@@ -90,11 +111,13 @@ class MainActivity : AppCompatActivity() {
             //Create text elements
             val idLabel = TextView(this)
             idLabel.text = id.toString()
-            val idWeight = TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 0.1F)
+            val idWeight =
+                TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 0.1F)
             idLabel.layoutParams = idWeight
 
 
-            val coordinatesWeight = TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 0.2F)
+            val coordinatesWeight =
+                TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 0.2F)
             val latLabel = TextView(this)
             latLabel.text = lat.toString()
             latLabel.layoutParams = coordinatesWeight
@@ -109,7 +132,8 @@ class MainActivity : AppCompatActivity() {
 
             val disLabel = TextView(this)
             disLabel.text = dis.toString()
-            val distanceWeight = TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 0.3F)
+            val distanceWeight =
+                TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 0.3F)
             disLabel.layoutParams = distanceWeight
 
             //Populate row
@@ -123,6 +147,13 @@ class MainActivity : AppCompatActivity() {
             tagTable?.addView(tableRow)
         }
     }
+
+//    fun getTag(url: String?) : String? {
+//        var request: Request = Request.Builder().url(url).build();
+//
+//        var response : Response = client.newCall(request).execute()
+//        return response.body()?.string();
+//    }
 
     fun getLocation() {
 
