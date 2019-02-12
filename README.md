@@ -89,6 +89,11 @@ Developed by **Group I**
     
     - See *~/SAR-Client/sar_server/README.md* for under section **Setting-up Ruby**, and sub-section **Installing Gem Set via Bundler** for more detail
 
+    There's a chance that the following `bundle install` won't work. This due to a conflict in versions. 
+    
+    If that's the case, go into ~/SAR-Client/sar_server/Gemfile.lock
+    
+    Scroll all the way to the bottom, and change the version number for bundler to the version number you get from `bundle -v`
 5. `cd` into *~/SAR-Client/sar_server*
 
 6. Run `bundle install`
