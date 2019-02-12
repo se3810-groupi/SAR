@@ -69,9 +69,9 @@ class TagCreationScreen : AppCompatActivity() {
 
     fun createTag(view: View){
         val queue = Volley.newRequestQueue(this)
-        val url = "192.168.2.3:3000/tags?latitude=" + location?.latitude + "&longitude=" + location?.longitude
+        var url = "192.168.2.3:3000/tags?latitude=" + location?.latitude + "&longitude=" + location?.longitude
 
-        val stringRequest = StringRequest(
+        var stringRequest = StringRequest(
             Request.Method.POST, url,
             Response.Listener<String> { response ->
                 if (response != null) {

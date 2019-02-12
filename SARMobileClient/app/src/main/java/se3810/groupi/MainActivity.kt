@@ -148,9 +148,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun getTags(){
+
         val requestQueue = Volley.newRequestQueue(this)
-        val url = "192.168.2.3:3000/tags/near_me?latitude=" + location.latitude + "&longitude=" + location.longitude
-        val jsonObjectRequest = JsonObjectRequest(url,
+        var url = "192.168.2.3:3000/tags/near_me?latitude=" + location.latitude + "&longitude=" + location.longitude
+        var jsonObjectRequest = JsonObjectRequest(url,
             Response.Listener<JSONObject> { response ->
                 if (response != null) {
                     val resultCount = response.optInt("resultCount")
