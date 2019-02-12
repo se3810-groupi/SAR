@@ -44,7 +44,34 @@ Developed by **Group I**
     Note: A more detailed version of setup can be found in ~/SAR-Client/sar_server/README.md
     
     Note: A list of supported endpoints can be found in ~/SAR-Client/sar_server/end-points.md
+---    
+### Pre-Server Setup
+
+    Note: A couple of steps are needed to run allow the VM and Emulator to talk to each other.
     
+1. Go to the network setting of the VM
+    
+    Within the running VM:
+    - Devices < Network < Network Settings
+    
+    From VM Manager:
+    - Highlight the VM you'd like to run
+    - Click setting at the top
+    - Select Network
+
+2. Change the `Attached to:` setting to `Bridged Adapter`
+
+3. Get the IP Address used by the VM
+
+    Can be found by looking in the settings inside the VM
+    
+    **WRITE down the IP somewhere, you'll need it.**
+    
+4. When you run the server in a later section, note down the port number used.
+    
+    A line in the output will say `listening on tcp:/0.0.0.0:xxxx`, where `xxxx` is the port number
+    
+5. When the application prompts for "server root" enter the `ip:port`
 ---
 ### Quick Setup
 
