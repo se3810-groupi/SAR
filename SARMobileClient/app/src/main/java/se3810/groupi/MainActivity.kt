@@ -24,6 +24,7 @@ import android.view.View
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
+import com.android.volley.Request
 import com.android.volley.Response
 import com.google.android.gms.location.*
 import org.json.JSONObject
@@ -149,8 +150,9 @@ class MainActivity : AppCompatActivity() {
 
     fun getTags(){
         val requestQueue = Volley.newRequestQueue(this)
-        val url = "192.168.2.3:3000/tags/near_me?latitude=" + location.latitude + "&longitude=" + location.longitude
-        val jsonObjectRequest = JsonObjectRequest(url,
+        val url = "http://192.168.1.13:3000/tags/near_me?latitude=" + location.latitude + "&longitude=" + location.longitude
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.GET, url,
             Response.Listener<JSONObject> { response ->
                 if (response != null) {
                     val resultCount = response.optInt("resultCount")
