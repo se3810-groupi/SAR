@@ -48,7 +48,7 @@ class User() {
      * tag: the tag to add to the set of tags cretaed by the user
      */
     fun createTag(tag : Tag){
-        createdTags.put(tag.tagID, tag)
+        createdTags.put(tag.id, tag)
     }
 
     /**

@@ -49,7 +49,7 @@ class TagCreationScreen : AppCompatActivity() {
         val labelRow = TableRow(this)
         val label = TextView(this)
         val text = this.labelTextInputField?.text.toString()
-        this.tag?.textLabels?.add(text)
+        this.tag?.label?.add(text)
         label.text = text
         labelRow.addView(label)
         labelsTable?.addView(labelRow)
