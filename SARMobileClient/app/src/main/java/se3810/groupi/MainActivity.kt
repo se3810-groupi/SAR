@@ -39,8 +39,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var location : Location
     private lateinit var tagTable : TableLayout
     private lateinit var mLocationRequest : LocationRequest
-    private val UPDATE_INTERVAL : Long = 1000 // 1 sec
-    private val FASTEST_INTERVAL : Long = 500 // .5 sec
+    private val UPDATE_INTERVAL : Long = 5000 // 1 sec
+    private val FASTEST_INTERVAL : Long = 100 // .5 sec
     private var locationManager: LocationManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,13 +53,13 @@ class MainActivity : AppCompatActivity() {
         //Initialize NearbyTags
         this.nearbyTags = NearbyTags()
 
-        //Temp values that will be overwritten by getLastLocation onStart
-        location = Location(-1.0,-1.0,-1.0)
+        //Temp values that will be overwritten by getLastLocation onStart.  Location of the MSOE CC
+        location = Location(43.044692,-87.908547,5.0)
+
+        loadTags()
 
         //Get new location every 1 sec
         startLocationUpdates()
-
-        loadTags()
     }
 
     /**
@@ -133,7 +133,7 @@ class MainActivity : AppCompatActivity() {
             tableRow.addView(disLabel)
 
             // Add row to table
-            tagTable?.addView(tableRow)
+            tagTable.addView(tableRow)
         }
     }
 
@@ -165,6 +165,7 @@ class MainActivity : AppCompatActivity() {
     //Adapted from https://github.com/codepath/android_guides/wiki/Retrieving-Location-with-LocationServices-API and
     //https://github.com/devangakhani/GPSLocation
     fun startLocationUpdates() {
+        println("Starting Location Updates")
         this.mLocationRequest = LocationRequest()
         this.mLocationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
         this.mLocationRequest.interval = UPDATE_INTERVAL
@@ -184,6 +185,7 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("ObsoleteSdkInt")
     private fun registerLocationListener() {
+        println("registering location listener!")
         val locationCallback = object : LocationCallback() {
             override fun onLocationResult(locationResult: LocationResult?) {
                 onLocationChanged(locationResult!!.lastLocation)
