@@ -1,27 +1,38 @@
 /*
  * The home screen of the SAR app.  This contains a list of nearby tags, and provides a button
  * to create a new tag at the current location of the user.
+ *
+ * Location Services adapted from: https://github.com/googlesamples/
+ * android-play-location/tree/master/BasicLocationSample/kotlin
  */
 
 package se3810.groupi
 
+import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
-import android.location.LocationManager
+import android.content.pm.PackageManager
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.DividerItemDecoration
+import android.os.Looper
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
 import android.view.View
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
+import android.widget.Toast
+import com.google.android.gms.location.*
 
 class MainActivity : AppCompatActivity() {
 
-    var nearbyTags : NearbyTags? = null
-    private var locationManager : LocationManager? = null
-    private var location : Location? = null
-    var tagTable : TableLayout? = null
-
+    private lateinit var nearbyTags : NearbyTags
+    private lateinit var location : Location
+    private lateinit var tagTable : TableLayout
+    private lateinit var mLocationRequest : LocationRequest
+    private val UPDATE_INTERVAL : Long = 1000 // 1 sec
+    private val FASTEST_INTERVAL : Long = 500 // .5 sec
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,12 +44,11 @@ class MainActivity : AppCompatActivity() {
         //Initialize NearbyTags
         this.nearbyTags = NearbyTags()
 
-        //Initialize location services
-        this.locationManager = getSystemService(LOCATION_SERVICE) as LocationManager?
-        //TODO this hardcoded value is temporary to validate the passing of information between
-        //TODO the activities for a new tag being created, and will be adjusted with the implementation
-        //TODO of the location manager
-        this.location = Location(-12.345678, 12.345678, 75.0)
+        //Temp values that will be overwritten by getLastLocation onStart
+        location = Location(-1.0,-1.0,-1.0)
+
+        //Get new location every 1 sec
+        startLocationUpdates()
 
         loadTags()
     }
@@ -51,9 +61,9 @@ class MainActivity : AppCompatActivity() {
         val tagCreateIntent = Intent(this, TagCreationScreen::class.java)
 
         //Send coordinates
-        tagCreateIntent.putExtra("LAT", this.location?.latitude)
-        tagCreateIntent.putExtra("LON", this.location?.longitude)
-        tagCreateIntent.putExtra("ALT", this.location?.altitude)
+        tagCreateIntent.putExtra("LAT", this.location.latitude)
+        tagCreateIntent.putExtra("LON", this.location.longitude)
+        tagCreateIntent.putExtra("ALT", this.location.altitude)
 
         // Start the new activity.
         startActivity(tagCreateIntent)
@@ -124,7 +134,71 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun getLocation() {
+    //Adapted from https://github.com/codepath/android_guides/wiki/Retrieving-Location-with-LocationServices-API and
+    //https://github.com/devangakhani/GPSLocation
+    fun startLocationUpdates() {
+        this.mLocationRequest = LocationRequest()
+        this.mLocationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+        this.mLocationRequest.interval = UPDATE_INTERVAL
+        this.mLocationRequest.fastestInterval = FASTEST_INTERVAL
 
+        // Create LocationSettingRequest object
+        val builder = LocationSettingsRequest.Builder()
+        builder.addLocationRequest(mLocationRequest)
+        val locationSettingsRequest = builder.build()
+
+        //Initialize service object
+        val settingsClient = LocationServices.getSettingsClient(this)
+        settingsClient!!.checkLocationSettings(locationSettingsRequest)
+
+        registerLocationListener()
+    }
+
+    @SuppressLint("ObsoleteSdkInt")
+    private fun registerLocationListener() {
+        val locationCallback = object : LocationCallback() {
+            override fun onLocationResult(locationResult: LocationResult?) {
+                onLocationChanged(locationResult!!.lastLocation)
+            }
+        }
+        // add permission if android version is greater then 23
+        if(Build.VERSION.SDK_INT >= 23 && checkPermission()) {
+            LocationServices.getFusedLocationProviderClient(this).requestLocationUpdates(mLocationRequest, locationCallback, Looper.myLooper())
+        }
+    }
+    //Source: https://github.com/devangakhani/GPSLocation
+    private fun onLocationChanged(location: android.location.Location) {
+        // create message for toast with updated latitude and longitude
+        val msg = "Updated Location: " + location.latitude  + " , " + location.longitude + " , " + location.altitude
+        println(msg)
+
+        this.location.latitude = location.latitude
+        this.location.longitude = location.longitude
+        this.location.altitude = location.altitude
+    }
+
+    //Source: https://github.com/devangakhani/GPSLocation
+    private fun checkPermission() : Boolean {
+        if (ContextCompat.checkSelfPermission(this , Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            return true
+        } else {
+            requestPermissions()
+            return false
+        }
+    }
+
+    //Source: https://github.com/devangakhani/GPSLocation
+    private fun requestPermissions() {
+        ActivityCompat.requestPermissions(this, arrayOf("Manifest.permission.ACCESS_FINE_LOCATION"),1)
+    }
+
+    //Source: https://github.com/devangakhani/GPSLocation
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if(requestCode == 1) {
+            if (permissions[0] == Manifest.permission.ACCESS_FINE_LOCATION ) {
+                registerLocationListener()
+            }
+        }
     }
 }
