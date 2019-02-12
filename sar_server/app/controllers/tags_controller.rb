@@ -15,7 +15,7 @@ class TagsController < ApplicationController
                 Location.find(params[:location_id])
               end
     @near_me = Tag.near_me(@origin, params[:proximity])
-    json_response(@near_me)
+    render json: @near_me.to_json(include: :location)
   end
 
   private
